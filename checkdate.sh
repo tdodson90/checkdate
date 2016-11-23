@@ -115,7 +115,7 @@ fi
 		echo
 	fi
 
-#lastlog date extraction
+#lastlog date extraction - 220
 
 	if [ -f lastlog.tgz ]; then
 		mkdir lastlog
@@ -242,6 +242,77 @@ fi
 
 
 #icon code
+
+#lastlog extraction - icon
+
+tar -zxf data.tgz
+cd data
+cd log
+
+		mkdir lastlog
+		cp "lastlog.tgz" lastlog
+		cd lastlog
+		tar -zxf lastlog.tgz
+		
+
+	echo
+   	echo "************************************************************************"
+   	echo "************************************************************************"
+   	echo "Last Log - Icon Date Extraction"
+   	echo
+
+if [ -f sys.log.boot ]; then
+		#sys.log.boot
+		echo "**********************"
+		echo Last Log - Sys.log.boot Date Range
+		echo
+
+		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.boot)
+  		echo $Startdate
+
+
+  		Enddate=$(tail -1 sys.log.boot | awk '/ .*:/ { print $1; print $2; exit; }')
+  		echo $Enddate
+		echo
+	fi
+
+		if [ -f sys.log.0 ]; then
+		#sys.log.0
+		echo "**********************"
+		echo Last Log - Sys.log.0 Date Range
+		echo
+
+		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.0)
+  		echo $Startdate
+
+
+  		Enddate=$(tail -1 sys.log.0 | awk '/ .*:/ { print $1; print $2; exit; }')
+  		echo $Enddate
+		echo
+
+	fi
+
+		#sys.log
+		echo "**********************"
+		echo Last Log - Sys.log Date Range
+		echo
+
+		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log)
+  		echo $Startdate
+
+
+  		Enddate=$(tail -1 sys.log | awk '/ .*:/ { print $1; print $2; exit; }')
+  		echo $Enddate
+		echo
+		echo "************************************************************************"
+		echo "************************************************************************"
+		echo
+
+cd ../../../
+
+
+
+#syslog extraction
 if [ -f sysinfo.txt ]; then
 	echo
 	echo "Icon Date Extraction"
@@ -280,87 +351,6 @@ if [ -f sysinfo.txt ]; then
 		echo
 
 	fi
-		
-		if [ -f sys.log.1 ]; then
-		#sys.log.1
-		echo "**********************"
-		echo Sys.log.1 Date Range
-		echo
-
-		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.1)
-  		echo $Startdate
-
-
-  		Enddate=$(tail -1 sys.log.1 | awk '/ .*:/ { print $1; print $2; exit; }')
-  		echo $Enddate
-		echo
-
-	fi
-
-		if [ -f sys.log.2 ]; then
-		#sys.log.2
-		echo "**********************"
-		echo Sys.log.2 Date Range
-		echo
-
-		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.2)
-  		echo $Startdate
-
-
-  		Enddate=$(tail -1 sys.log.2 | awk '/ .*:/ { print $1; print $2; exit; }')
-  		echo $Enddate
-		echo
-
-	fi
-
-		if [ -f sys.log.3 ]; then
-		#sys.log.3
-		echo "**********************"
-		echo Sys.log.3 Date Range
-		echo
-
-		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.3)
-  		echo $Startdate
-
-
-  		Enddate=$(tail -1 sys.log.3 | awk '/ .*:/ { print $1; print $2; exit; }')
-  		echo $Enddate
-		echo
-
-	fi
-
-
-		if [ -f sys.log.4 ]; then
-		#sys.log.4
-		echo "**********************"
-		echo Sys.log.2 Date Range
-		echo
-
-		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.4)
-  		echo $Startdate
-
-
-  		Enddate=$(tail -1 sys.log.4 | awk '/ .*:/ { print $1; print $2; exit; }')
-  		echo $Enddate
-		echo
-
-	fi
-
-		if [ -f sys.log.5 ]; then
-		#sys.log.5
-		echo "**********************"
-		echo Sys.log.2 Date Range
-		echo
-
-		Startdate=$( awk '/ .*:/ { print $1; print $2; exit; }' sys.log.5)
-  		echo $Startdate
-
-
-  		Enddate=$(tail -1 sys.log.5 | awk '/ .*:/ { print $1; print $2; exit; }')
-  		echo $Enddate
-		echo
-
-	fi
 
 		#sys.log
 		echo "**********************"
@@ -374,10 +364,8 @@ if [ -f sysinfo.txt ]; then
   		Enddate=$(tail -1 sys.log | awk '/ .*:/ { print $1; print $2; exit; }')
   		echo $Enddate
 		echo
-		
-	mkdir lastlog
-	cp "lastlog" lastlog
-	cd lastlog
+
+
 
 
 
