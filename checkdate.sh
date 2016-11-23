@@ -374,7 +374,7 @@ if [ -f sysinfo.txt ]; then
   		Enddate=$(tail -1 sys.log | awk '/ .*:/ { print $1; print $2; exit; }')
   		echo $Enddate
 		echo
-	pwd
+		
 	mkdir lastlog
 	cp "lastlog" lastlog
 	cd lastlog
